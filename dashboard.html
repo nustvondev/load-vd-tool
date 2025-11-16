@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Player Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <h1>Video Player Control</h1>
+      
+      <div class="control-section">
+        <h2>Chọn Video</h2>
+        <button id="btn-select-video" class="btn btn-primary">
+          📁 Chọn Video
+        </button>
+        <div id="video-info" class="video-info"></div>
+      </div>
+
+      <div class="control-section">
+        <h2>Điều khiển Video</h2>
+        <div class="button-group">
+          <button id="btn-flip-horizontal" class="btn btn-control">
+            ↔️ Lật Ngang
+          </button>
+          <button id="btn-flip-vertical" class="btn btn-control">
+            ↕️ Lật Dọc
+          </button>
+          <button id="btn-reset" class="btn btn-control">
+            🔄 Đặt Lại
+          </button>
+        </div>
+      </div>
+
+      <div class="control-section">
+        <h2>Phóng To / Thu Nhỏ</h2>
+        <div class="zoom-controls">
+          <button id="btn-zoom-in" class="btn btn-zoom">➕ Phóng To</button>
+          <span id="zoom-value" class="zoom-value">100%</span>
+          <button id="btn-zoom-out" class="btn btn-zoom">➖ Thu Nhỏ</button>
+        </div>
+      </div>
+
+      <div class="control-section">
+        <h2>Icon Effects</h2>
+        <button id="btn-select-icon" class="btn btn-icon">
+          🖼️ Chọn Icon
+        </button>
+        <div id="icon-info" class="video-info" style="margin-top: 10px;"></div>
+        <button id="btn-activate-icon" class="btn btn-activate" style="margin-top: 10px; width: 100%;" disabled>
+          ✨ Kích Hoạt Icon
+        </button>
+      </div>
+
+      <div class="control-section">
+        <h2>Tùy chọn</h2>
+        <label class="checkbox-label">
+          <input type="checkbox" id="chk-loop" checked />
+          <span>Lặp lại video</span>
+        </label>
+        <div style="margin-top: 15px;">
+          <button id="btn-lock" class="btn btn-lock">
+            🔓 Khóa Cài đặt
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
+
