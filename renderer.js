@@ -1,6 +1,6 @@
 let videoElement;
 
-const TRANSFORM_STEP = 0.1;
+const TRANSFORM_STEP = 0.05;
 const MIN_SCALE = 0.2;
 const MAX_SCALE = 5;
 

@@ -161,8 +161,9 @@ const resizeToVideo = () => {
   const videoHeight = videoElement.videoHeight;
   
   if (videoWidth > 0 && videoHeight > 0) {
-    // Chiều cao dựa theo thiết bị, chiều rộng scale theo tỷ lệ
-    const targetHeight = deviceHeight > 0 ? deviceHeight : 1080;
+    // Giữ chất lượng: không upscale quá kích thước gốc của video
+    const maxAllowedHeight = Math.min(deviceHeight > 0 ? deviceHeight : 1080, videoHeight);
+    const targetHeight = maxAllowedHeight;
     const scaledWidth = Math.round((videoWidth / videoHeight) * targetHeight);
     window.videoAPI.resizeWindow(scaledWidth, targetHeight);
   }

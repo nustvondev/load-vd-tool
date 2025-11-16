@@ -78,6 +78,12 @@ const createVideoWindow = (fileUrl) => {
 
   // Send video URL after window is ready
   videoWindow.webContents.once('did-finish-load', () => {
+    // Lock zoom to 1 for pixel-perfect rendering
+    try {
+      videoWindow.webContents.setZoomFactor(1);
+      videoWindow.webContents.setVisualZoomLevelLimits(1, 1);
+    } catch {}
+
     if (fileUrl) {
       videoWindow.webContents.send('video-command', {
         command: 'load-video',

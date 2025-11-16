@@ -7,7 +7,7 @@ let loop = true;
 let hasVideoWindow = false;
 let isLocked = false;
 
-const TRANSFORM_STEP = 0.1;
+const TRANSFORM_STEP = 0.05;
 const MIN_SCALE = 0.2;
 const MAX_SCALE = 5;
 
