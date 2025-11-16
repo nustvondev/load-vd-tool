@@ -9,6 +9,7 @@ contextBridge.exposeInMainWorld('videoAPI', {
   resizeWindow: (width, height) => {
     ipcRenderer.send('resize-video-window', { width, height });
   },
-  notifyReady: () => ipcRenderer.send('video-window-ready')
+  notifyReady: () => ipcRenderer.send('video-window-ready'),
+  getDeviceHeight: () => ipcRenderer.invoke('get-device-height')
 });
 

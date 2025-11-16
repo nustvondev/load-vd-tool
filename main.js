@@ -1,4 +1,4 @@
-const { app, BrowserWindow, dialog, ipcMain, Menu } = require('electron');
+const { app, BrowserWindow, dialog, ipcMain, Menu, screen } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const { pathToFileURL } = require('url');
@@ -162,4 +162,10 @@ ipcMain.on('resize-video-window', (event, { width, height }) => {
 
 ipcMain.on('video-window-ready', () => {
   // Video window is ready
+});
+
+// Expose device height for renderer to size video window appropriately
+ipcMain.handle('get-device-height', () => {
+  const primaryDisplay = screen.getPrimaryDisplay();
+  return primaryDisplay?.workAreaSize?.height || 1080;
 });

@@ -2,6 +2,7 @@ let videoElement;
 let zoom = 1;
 let flipH = false;
 let flipV = false;
+let deviceHeight = 1080;
 
 const applyTransform = () => {
   if (!videoElement) return;
@@ -160,10 +161,10 @@ const resizeToVideo = () => {
   const videoHeight = videoElement.videoHeight;
   
   if (videoWidth > 0 && videoHeight > 0) {
-    // Chiều cao cố định 1080px, chiều rộng scale theo tỷ lệ
-    const fixedHeight = 1080;
-    const scaledWidth = Math.round((videoWidth / videoHeight) * fixedHeight);
-    window.videoAPI.resizeWindow(scaledWidth, fixedHeight);
+    // Chiều cao dựa theo thiết bị, chiều rộng scale theo tỷ lệ
+    const targetHeight = deviceHeight > 0 ? deviceHeight : 1080;
+    const scaledWidth = Math.round((videoWidth / videoHeight) * targetHeight);
+    window.videoAPI.resizeWindow(scaledWidth, targetHeight);
   }
 };
 
@@ -274,5 +275,17 @@ window.addEventListener('DOMContentLoaded', () => {
   // Notify ready
   window.videoAPI.notifyReady();
   applyTransform();
+
+  // Lấy chiều cao thiết bị để resize theo màn hình
+  if (typeof window.videoAPI.getDeviceHeight === 'function') {
+    window.videoAPI.getDeviceHeight()
+      .then((h) => {
+        if (Number.isFinite(h) && h > 0) {
+          deviceHeight = h;
+          resizeToVideo();
+        }
+      })
+      .catch(() => {});
+  }
 });
 
